@@ -36,13 +36,24 @@ Route::controller(HomeController::class)->group(function () {
 });
 
 Route::prefix('admin')->group(function () {
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/', 'index')->name('admin');
+        Route::get('dashboard', 'index')->name('admin.dashboard');
+        Route::get('diklat', 'diklat')->name('admin.diklat');
 
-Route::controller(AdminController::class)->group(function () {
-    Route::get('/','index')->name('admin');
-    Route::get('dashboard', 'index')->name('admin.dashboard');
-    Route::get('diklat', 'diklat')->name('admin.diklat');
-    Route::get('diklat/daftar', 'daftardiklat')->name('admin.diklat.daftar');
-    Route::get('diklat/daftar/content', 'content')->name('admin.diklat.content');
-});
+        Route::prefix('diklat')->group(function () {
+            Route::get('daftar', 'daftardiklat')->name('admin.diklat.daftar');
 
+            Route::prefix('daftar')->group(function () {
+                Route::get('content', 'content')->name('admin.diklat.content');
+
+                Route::prefix('content')->group(function(){
+                    Route::get('bahanbacaan','bahanbacaan')->name('admin.diklat.content.bahanbacaan');
+                    Route::get('video','video')->name('admin.diklat.content.video');
+                });
+
+            });
+
+        });
+    });
 });

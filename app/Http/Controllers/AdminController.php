@@ -25,4 +25,14 @@ class AdminController extends Controller
     {
         return view('admin.diklat.content');
     }
+
+    public function bahanbacaan()
+    {
+        return view('admin.diklat.content.bahanbacaan');
+    }
+
+    public function video()
+    {
+        return view('admin.diklat.content.video');
+    }
 }
