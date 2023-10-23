@@ -40,6 +40,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/', 'index')->name('admin');
         Route::get('dashboard', 'index')->name('admin.dashboard');
         Route::get('diklat', 'diklat')->name('admin.diklat');
+        Route::get('category', 'category')->name('admin.category');
 
         Route::prefix('diklat')->group(function () {
             Route::get('daftar', 'daftardiklat')->name('admin.diklat.daftar');

@@ -54,7 +54,8 @@
                     Diklat
                 </li>
 
-                <li class="{{ request()->is('admin/diklat') || request()->is('admin/diklat/daftar') || request()->is('admin/diklat/daftar/content') ? 'active':'has-sub' }}">
+                <li
+                    class="{{ request()->is('admin/diklat') || request()->is('admin/diklat/daftar') || request()->is('admin/diklat/daftar/content') || request()->is('admin/category') ? 'active' : 'has-sub' }}">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                         data-target="#authentication" aria-expanded="false" aria-controls="authentication">
                         <i class="mdi mdi-book-open-variant"></i>
@@ -77,7 +78,7 @@
                             </li>
 
                             <li>
-                                <a class="sidenav-item-link" href="reset-password.html">
+                                <a class="sidenav-item-link" href="{{ route('admin.category') }}">
                                     <span class="nav-text">Category</span>
 
                                 </a>

@@ -16,6 +16,11 @@ class AdminController extends Controller
         return view('admin.diklat');
     }
 
+    public function category()
+    {
+        return view('admin.category');
+    }
+
     public function daftardiklat()
     {
         return view('admin.diklat.daftar');
