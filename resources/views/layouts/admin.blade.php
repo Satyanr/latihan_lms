@@ -68,7 +68,7 @@
         NProgress.start();
     </script>
 
-<div id="toaster"></div>
+
 
 
 <!-- ====================================
