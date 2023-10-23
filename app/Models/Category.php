@@ -14,6 +14,6 @@ class Category extends Model
 
     public function diklats()
     {
-        return $this->belongsToMany(Diklat::class);
+        return $this->hasMany(DiklatCatLink::class,'category_id','id');
     }
 }
