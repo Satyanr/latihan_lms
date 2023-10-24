@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Admin\Diklat;
 
+use App\Models\Diklat;
 use Livewire\Component;
-use App\Models\Category;
 use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Index extends Component
 {
-    public $nama, $image, $category_id, $searchCategory, $selectedCategoryId, $imageprev;
+    public $nama, $image, $Diklat_id, $searchDiklat, $selectedDiklatId, $imageprev, $deskripsi;
     public $updateMode = false;
 
     use WithPagination;
@@ -26,15 +26,15 @@ class Index extends Component
 
     public function resetPage()
     {
-        $this->gotoPage(1, 'categoryPages');
+        $this->gotoPage(1, 'diklatPages');
     }
     public function render()
     {
-        $searchCategory = '%' . $this->searchCategory . '%';
+        $searchDiklat = '%' . $this->searchDiklat . '%';
         return view('livewire.admin.diklat.index', [
-            'categories' => Category::where('nama', 'LIKE', $searchCategory)
+            'diklats' => Diklat::where('nama', 'LIKE', $searchDiklat)
                 ->orderBy('id', 'DESC')
-                ->paginate(10, ['*'], 'categoryPages'),
+                ->paginate(10, ['*'], 'diklatPages'),
         ]);
     }
 
@@ -50,11 +50,13 @@ class Index extends Component
             'nama' => 'required',
         ]);
 
-        $validatedDate['image'] = $this->image->store('files', 'public');
+        $validatedDate['image'] = $this->image->store('diklat_img', 'public');
 
-        Category::create([
+        Diklat::create([
             'nama' => $this->nama,
             'slug' => Str::slug($this->nama),
+            'deskripsi'=>$this->deskripsi,
+            'user_id' => auth()->user()->id,
             'image' => $validatedDate['image'],
         ]);
 
@@ -63,10 +65,10 @@ class Index extends Component
 
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
-        $this->category_id = $id;
-        $this->nama = $category->nama;
-        $this->imageprev = $category->image;
+        $Diklat = Diklat::findOrFail($id);
+        $this->Diklat_id = $id;
+        $this->nama = $Diklat->nama;
+        $this->imageprev = $Diklat->image;
         $this->updateMode = true;
     }
 
@@ -84,16 +86,16 @@ class Index extends Component
 
         if ($this->image != null) {
             $validatedDate['image'] = $this->image->store('files', 'public');
-            $category = Category::find($this->category_id);
-            $category->update([
+            $Diklat = Diklat::find($this->Diklat_id);
+            $Diklat->update([
                 'nama' => $this->nama,
                 'slug' => Str::slug($this->nama),
                 'image' => $validatedDate['image'],
             ]);
             Storage::disk('public')->delete($this->imageprev);
         } else {
-            $category = Category::find($this->category_id);
-            $category->update([
+            $Diklat = Diklat::find($this->Diklat_id);
+            $Diklat->update([
                 'nama' => $this->nama,
                 'slug' => Str::slug($this->nama),
             ]);
@@ -105,23 +107,23 @@ class Index extends Component
 
     // public function updateStatus($id)
     // {
-    //     $category = Category::find($id);
-    //     $category->status = $category->status == 1 ? 0 : 1;
-    //     $category->save();
+    //     $Diklat = Diklat::find($id);
+    //     $Diklat->status = $Diklat->status == 1 ? 0 : 1;
+    //     $Diklat->save();
     // }
 
     // public function ondel($id)
     // {
-    //     $this->selectedCategoryId = $id;
+    //     $this->selectedDiklatId = $id;
     // }
 
     public function delete($id)
     {
-        $category = Category::find($id);
+        $Diklat = Diklat::find($id);
 
-        if ($category) {
-            Storage::disk('public')->delete($category->image);
-            $category->delete();
+        if ($Diklat) {
+            Storage::disk('public')->delete($Diklat->image);
+            $Diklat->delete();
         } else {
         }
     }

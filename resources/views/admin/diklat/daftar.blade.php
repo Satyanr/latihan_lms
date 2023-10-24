@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="content"><!-- For Components documentaion -->
-        @livewire('admin.category.index')
+        @livewire('admin.diklat.index')
     </div>
 @endsection

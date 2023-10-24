@@ -1,14 +1,14 @@
 <div>
     <div>
-        <div wire:ignore.self class="modal fade" id="modalCategory" style="display: none;" aria-hidden="true">
+        <div wire:ignore.self class="modal fade" id="modalDiklat" style="display: none;" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">
                             @if ($updateMode)
-                                <h5 class="modal-title" id="modallabel">Edit Data Category</h5>
+                                <h5 class="modal-title" id="modallabel">Edit Data Diklat</h5>
                             @else
-                                <h5 class="modal-title" id="modallabel">Tambahkan Category</h5>
+                                <h5 class="modal-title" id="modallabel">Tambahkan Diklat</h5>
                             @endif
                             <button type="button" class="close" data-dismiss="modal"
                                 wire:click.prevent='cancel()'><span>×</span>
@@ -68,6 +68,14 @@
                                     <div class="col">
                                         <input type="text" class="form-control @error('nama') is-invalid @enderror"
                                             placeholder="Nama" wire:model='nama'>
+                                        @error('nama')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-row mb-3">
+                                    <div class="col">
+                                        <textarea id="" cols="30" rows="10" wire:model='deskripsi'></textarea>
                                         @error('nama')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror

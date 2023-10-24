@@ -2,12 +2,12 @@
     <div class="card card-default">
         <div class="card-header">
             <a href="#"><button type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#modalCategory">Tambahkan
+                    data-target="#modalDiklat">Tambahkan
                 </button></a>
             <div class="card-header px-0">
                 <div class="input-group px-5">
                     <input type="text" class="form-control" aria-label="Text input with dropdown button"
-                        placeholder="Search..." wire:model='searchCategory' wire:input='resetPage'>
+                        placeholder="Search..." wire:model='searchDiklat' wire:input='resetPage'>
                 </div>
             </div>
         </div>
@@ -20,21 +20,21 @@
                     <tr>
                         <th scope="col">Image</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Jumlah Kursus</th>
+                        <th scope="col">Deskripsi</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($diklats as $diklat)
                         <tr>
                             <td class="py-4">
-                                <img src="{{ asset('storage/' . $category->image) }}" alt="Product Image">
+                                <img src="{{ asset('storage/' . $diklat->image) }}" alt="Product Image">
                             </td>
                             <td>
-                                <span>{{ $category->nama }}</span>
+                                <span>{{ $diklat->nama }}</span>
                             </td>
                             <td>
-                                <span>{{ $category->diklats->count() }}</span>
+                                <span>{{ $diklat->deskripsi }}</span>
                             </td>
                             <td>
                                 <div class="dropdown">
@@ -45,10 +45,10 @@
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item" href="#" data-toggle="modal"
-                                            data-target="#modalCategory" wire:click='edit({{ $category->id }})'><i
+                                            data-target="#modalDiklat" wire:click='edit({{ $diklat->id }})'><i
                                                 class="mdi mdi-pencil" style="padding-right: 1rem;"></i>Edit</a>
                                         <a class="dropdown-item" href="#" style="color: red;"
-                                            wire:click='delete({{ $category->id }})'><i class="mdi mdi-trash-can"
+                                            wire:click='delete({{ $diklat->id }})'><i class="mdi mdi-trash-can"
                                                 style="color: red; padding-right: 1rem;"></i>Delete</a>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $categories->links('customs.paginatheme') }}
+            {{ $diklats->links('customs.paginatheme') }}
         </div>
     </div>
 
@@ -65,6 +65,6 @@
         x-on:livewire-upload-finish="uploading = false" x-on:livewire-upload-error="uploading = false"
         x-on:livewire-upload-progress="progress = $event.detail.progress">
         <!-- Modal -->
-        @include('livewire.admin.category.modal')
+        @include('livewire.admin.diklat.modal')
     </div>
 </div>
