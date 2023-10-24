@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin\Category;
+namespace App\Livewire\Admin\Diklat;
 
 use Livewire\Component;
 use App\Models\Category;
@@ -17,6 +17,7 @@ class Index extends Component
     use WithPagination;
     use WithFileUploads;
     protected $paginationTheme = 'bootstrap';
+
     // protected $listeners = ['delete'];
     // public function getListeners()
     // {
@@ -30,7 +31,7 @@ class Index extends Component
     public function render()
     {
         $searchCategory = '%' . $this->searchCategory . '%';
-        return view('livewire.admin.category.index', [
+        return view('livewire.admin.diklat.index', [
             'categories' => Category::where('nama', 'LIKE', $searchCategory)
                 ->orderBy('id', 'DESC')
                 ->paginate(10, ['*'], 'categoryPages'),

@@ -16,6 +16,8 @@
     <meta name="theme-name" content="mono" />
 
     <title>Mono - Responsive Admin & Dashboard Template</title>
+     <!-- CSRF Token -->
+     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto" rel="stylesheet">
@@ -53,8 +55,8 @@
 
 
 
-    <!-- FAVICON -->
-    <link href="images/favicon.png" rel="shortcut icon" />
+    <!-- Favicon -->
+    <link href="/favicon.png" rel="icon">
 
     <script src="/adminasset/plugins/nprogress/nprogress.js"></script>
 </head>
