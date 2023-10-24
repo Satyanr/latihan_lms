@@ -16,8 +16,11 @@
     <meta name="theme-name" content="mono" />
 
     <title>Mono - Responsive Admin & Dashboard Template</title>
-     <!-- CSRF Token -->
-     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    @livewireStyles
+    @stack('css')
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto" rel="stylesheet">
@@ -27,26 +30,7 @@
     <!-- PLUGINS CSS STYLE -->
     <link href="/adminasset/plugins/nprogress/nprogress.css" rel="stylesheet" />
 
-
-
-
-    <link href="/adminasset/plugins/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css" rel="stylesheet" />
-
-
-
     <link href="/adminasset/plugins/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
-
-
-
-    <link href="/adminasset/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
-
-
-
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
-
-
-    <link href="/adminasset/plugins/toaster/toastr.min.css" rel="stylesheet" />
 
 
     <!-- MONO CSS -->
@@ -73,36 +57,36 @@
 
 
 
-<!-- ====================================
+    <!-- ====================================
     ——— WRAPPER
     ===================================== -->
-<div class="wrapper">
+    <div class="wrapper">
 
-    <x-admin.sidebar />
-
-    <!-- ====================================
-      ——— PAGE WRAPPER
-      ===================================== -->
-    <div class="page-wrapper">
-
-        <!-- Header -->
-        <x-admin.header />
+        <x-admin.sidebar />
 
         <!-- ====================================
+      ——— PAGE WRAPPER
+      ===================================== -->
+        <div class="page-wrapper">
+
+            <!-- Header -->
+            <x-admin.header />
+
+            <!-- ====================================
         ——— CONTENT WRAPPER
         ===================================== -->
-        <div class="content-wrapper">
-            @yield('content')
+            <div class="content-wrapper">
+                @yield('content')
+            </div>
+
+            <!-- Footer -->
+            <x-admin.footer />
+
         </div>
-
-        <!-- Footer -->
-        <x-admin.footer />
-
     </div>
-</div>
 
-<!-- Card Offcanvas -->
-<x-admin.cardoffcanvas />
+    <!-- Card Offcanvas -->
+    <x-admin.cardoffcanvas />
 
     <script src="/adminasset/plugins/jquery/jquery.min.js"></script>
     <script src="/adminasset/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -115,41 +99,9 @@
 
 
 
-    <script src="/adminasset/plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
-
-
-
     <script src="/adminasset/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
     <script src="/adminasset/plugins/jvectormap/jquery-jvectormap-world-mill.js"></script>
     <script src="/adminasset/plugins/jvectormap/jquery-jvectormap-us-aea.js"></script>
-
-
-
-    <script src="/adminasset/plugins/daterangepicker/moment.min.js"></script>
-    <script src="/adminasset/plugins/daterangepicker/daterangepicker.js"></script>
-    <script>
-        jQuery(document).ready(function() {
-            jQuery('input[name="dateRange"]').daterangepicker({
-                autoUpdateInput: false,
-                singleDatePicker: true,
-                locale: {
-                    cancelLabel: 'Clear'
-                }
-            });
-            jQuery('input[name="dateRange"]').on('apply.daterangepicker', function(ev, picker) {
-                jQuery(this).val(picker.startDate.format('MM/DD/YYYY'));
-            });
-            jQuery('input[name="dateRange"]').on('cancel.daterangepicker', function(ev, picker) {
-                jQuery(this).val('');
-            });
-        });
-    </script>
-
-
-
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
-
 
     <script src="/adminasset/plugins/toaster/toastr.min.js"></script>
 
@@ -160,11 +112,9 @@
     <script src="/adminasset/js/map.js"></script>
     <script src="/adminasset/js/custom.js"></script>
 
+    @stack('scripts')
 
-
-
-    <!--  -->
-
+    @livewireScripts
 
 </body>
 

@@ -75,8 +75,11 @@
                                 </div>
                                 <div class="form-row mb-3">
                                     <div class="col">
-                                        <textarea id="" cols="30" rows="10" wire:model='deskripsi'></textarea>
-                                        @error('nama')
+                                        <div wire:ignore>
+                                            <textarea class="summernote form-control" wire:model="deskripsi">
+                                            </textarea>
+                                        </div>
+                                        @error('deskripsi')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>

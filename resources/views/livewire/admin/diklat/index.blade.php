@@ -34,7 +34,7 @@
                                 <span>{{ $diklat->nama }}</span>
                             </td>
                             <td>
-                                <span>{{ $diklat->deskripsi }}</span>
+                                <span>{!! $diklat->deskripsi !!}</span>
                             </td>
                             <td>
                                 <div class="dropdown">
@@ -68,3 +68,39 @@
         @include('livewire.admin.diklat.modal')
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        function initializeSummernote() {
+            $(".summernote").summernote({
+                height: 350,
+                minHeight: null,
+                maxHeight: null,
+                focus: false,
+                callbacks: {
+                    onChange: function(contents, $editable) {
+                        @this.set('deskripsi', contents);
+                    }
+                }
+            });
+
+            $(".inline-editor").summernote({
+                airMode: true
+            });
+        }
+
+        $(document).ready(function() {
+            initializeSummernote();
+
+            window.edit = function() {
+                $(".summernote").summernote();
+            }
+
+            window.save = function() {
+                $(".summernote").summernote('destroy');
+            }
+
+           
+        });
+    </script>
+@endpush
