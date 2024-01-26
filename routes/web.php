@@ -18,12 +18,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('index');
 });
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+// Route::get('/home', function(){
+//     return redirect()->route('index');
+// });
 
 Route::controller(Controller::class)->group(function () {
     Route::get('index', 'home')->name('index');
