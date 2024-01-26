@@ -1,7 +1,7 @@
 <div>
     <div class="card card-default">
         <div class="card-header">
-            <a href="#"><button type="button" class="btn btn-primary" data-toggle="modal"
+            <a href="javascript:void(0)"><button type="button" class="btn btn-primary" data-toggle="modal"
                     data-target="#modalDiklat">Tambahkan
                 </button></a>
             <div class="card-header px-0">
@@ -38,16 +38,16 @@
                             </td>
                             <td>
                                 <div class="dropdown">
-                                    <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                    <a class="dropdown-toggle icon-burger-mini" href="javascript:void(0)" role="button"
                                         id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false" data-display="static">
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#" data-toggle="modal"
+                                        <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
                                             data-target="#modalDiklat" wire:click='edit({{ $diklat->id }})'><i
                                                 class="mdi mdi-pencil" style="padding-right: 1rem;"></i>Edit</a>
-                                        <a class="dropdown-item" href="#" style="color: red;"
+                                        <a class="dropdown-item" href="javascript:void(0)" style="color: red;"
                                             wire:click='delete({{ $diklat->id }})'><i class="mdi mdi-trash-can"
                                                 style="color: red; padding-right: 1rem;"></i>Delete</a>
                                     </div>
@@ -100,7 +100,7 @@
                 $(".summernote").summernote('destroy');
             }
 
-           
+
         });
     </script>
 @endpush

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Models\Diklat;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
@@ -20,8 +21,9 @@ class Controller extends BaseController
         return view('main.diklat');
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return view('main.diklat.detail');
+        $diklat = Diklat::find($id);
+        return view('main.diklat.detail', compact('diklat'));
     }
 }

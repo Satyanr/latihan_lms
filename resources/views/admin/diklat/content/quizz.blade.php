@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="content"><!-- For Components documentaion -->
-        @livewire('admin.content.topik.content.bahan-bacaan', ['topik' => $topik])
+        @livewire('admin.content.topik.content.quizz-content', ['topik' => $topik])
     </div>
 @endsection
 

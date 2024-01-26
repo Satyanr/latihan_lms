@@ -28,11 +28,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::controller(Controller::class)->group(function () {
     Route::get('index', 'home')->name('index');
     Route::get('diklat', 'diklat')->name('diklat');
-    Route::get('diklat/detail', 'detail')->name('diklat.detail');
+    Route::get('diklat/{id}/detail', 'detail')->name('diklat.detail');
 });
 
 Route::controller(HomeController::class)->group(function () {
-    Route::get('diklat/content', 'content')->name('diklat.content');
+    Route::get('diklat/content/{id}', 'content')->name('diklat.content');
 });
 
 Route::prefix('admin')->group(function () {
@@ -46,11 +46,12 @@ Route::prefix('admin')->group(function () {
             Route::get('daftar', 'daftardiklat')->name('admin.diklat.daftar');
 
             Route::prefix('daftar')->group(function () {
-                Route::get('content', 'content')->name('admin.diklat.content');
+                Route::get('content/{id}', 'content')->name('admin.diklat.content');
 
                 Route::prefix('content')->group(function(){
-                    Route::get('bahanbacaan','bahanbacaan')->name('admin.diklat.content.bahanbacaan');
-                    Route::get('video','video')->name('admin.diklat.content.video');
+                    Route::get('bahanbacaan/{id}','bahanbacaan')->name('admin.diklat.content.bahanbacaan');
+                    Route::get('video/{id}','video')->name('admin.diklat.content.video');
+                    Route::get('quizz/{id}','quizz')->name('admin.diklat.content.quizz');
                 });
 
             });

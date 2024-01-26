@@ -25,6 +25,7 @@
     <!-- Libraries Stylesheet -->
     <link href="/mainasset/lib/animate/animate.min.css" rel="stylesheet">
     <link href="/mainasset/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/adminasset/plugins/material/css/materialdesignicons.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="/mainasset/css/bootstrap.min.css" rel="stylesheet">

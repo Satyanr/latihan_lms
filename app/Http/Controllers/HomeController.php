@@ -52,9 +52,10 @@ class HomeController extends Controller
         }
     }
 
-    public function content()
+    public function content($id)
     {
-        return view('main.diklat.content');
+        $content = \App\Models\Content::find($id);
+        return view('main.diklat.content', compact('content'));
     }
 
 }

@@ -18,17 +18,17 @@ class Content extends Model
 
     public function file()
     {
-        return $this->hasMany(File::class);
+        return $this->hasOne(File::class);
     }
 
     public function video()
     {
-        return $this->hasMany(Video::class);
+        return $this->hasOne(Video::class);
     }
 
     public function quiz()
     {
-        return $this->hasMany(Quiz::class);
+        return $this->hasOne(Quiz::class);
     }
 
     public function contentlink()

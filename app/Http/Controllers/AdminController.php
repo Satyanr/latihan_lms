@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Topik;
+use App\Models\Diklat;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,7 +13,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         return view('admin.index');
@@ -32,18 +34,27 @@ class AdminController extends Controller
         return view('admin.diklat.daftar');
     }
 
-    public function content()
+    public function content($id)
     {
-        return view('admin.diklat.content');
+        $diklat = Diklat::find($id);
+        return view('admin.diklat.content', compact('diklat'));
     }
 
-    public function bahanbacaan()
+    public function bahanbacaan($id)
     {
-        return view('admin.diklat.content.bahanbacaan');
+        $topik = Topik::find($id);
+        return view('admin.diklat.content.bahanbacaan', compact('topik'));
     }
 
-    public function video()
+    public function video($id)
     {
-        return view('admin.diklat.content.video');
+        $topik = Topik::find($id);
+        return view('admin.diklat.content.video', compact('topik'));
+    }
+
+    public function quizz($id)
+    {
+        $topik = Topik::find($id);
+        return view('admin.diklat.content.quizz', compact('topik'));
     }
 }
