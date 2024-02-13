@@ -14,14 +14,4 @@ class Question extends Model
     {
         return $this->hasMany(QuestionAnswer::class);
     }
-
-    public function correct()
-    {
-        return $this->hasOne(QuestionAnswer::class, 'questions_id')->where('answer', 'answer');
-    }
-
-    public function wrong()
-    {
-        return $this->hasOne(QuestionAnswer::class, 'questions_id')->where('answer', '!=', 'answer');
-    }
 }

@@ -19,8 +19,3 @@ class Quiz extends Model
     {
         return $this->hasMany(QuestionLinkQuiz::class, 'quizzes_id', 'id');
     }
-    public function correct()
-    {
-        return $this->hasManyThrough(QuestionAnswer::class, QuestionLinkQuiz::class, 'quizzes_id', 'questions_id', 'id', 'questions_id')->where('answer', 'answer');
-    }
-}

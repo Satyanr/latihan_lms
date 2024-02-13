@@ -61,7 +61,7 @@
                         <h6>Jumlah Soal: {{ $quizs->question->count() }}</h6>
                         <h6>Waktu Pengerjaan: {{ $quizs->durasi }}</h6>
                         <span>Ingin mengerjakan soal ini ?</span>
-                        <span>Jawaban Benar = {{ $quizs->correct }}</span>
+                        <span>Jawaban Benar = </span>
                         <p>
                             <button onclick="kerjakanClicked(event)">Kerjakan</button>
                             <button>Kembali</button>
