@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('users_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('quizzes_id')->nullable()->constrained('quizzes')->onDelete('cascade');
             $table->string('sisa_waktu')->nullable();
+            $table->boolean('is_correct')->default(false);
             $table->string('answer')->nullable();
             $table->timestamps();
         });
