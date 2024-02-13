@@ -131,6 +131,15 @@
                         <div class="container-fluid">
                             <div class="form-row mb-3">
                                 <div class="col">
+                                    <input type="text" class="form-control @error('durasi') is-invalid @enderror"
+                                        placeholder="Durasi" wire:model='durasi'>
+                                    @error('durasi')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <div class="col">
                                     <input type="text" class="form-control @error('question') is-invalid @enderror"
                                         placeholder="Pertanyaan" wire:model='question'>
                                     @error('question')

@@ -50,6 +50,7 @@ class QuizzContent extends Component
 
         $quiz = Quiz::create([
             'nama' => $this->nama,
+            'durasi' => $this->durasi,
             'content_id' => $content->id,
         ]);
 

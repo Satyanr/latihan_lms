@@ -15,5 +15,8 @@ class Quiz extends Model
         return $this->belongsTo(Content::class);
     }
 
-    
+    public function question()
+    {
+        return $this->hasMany(QuestionLinkQuiz::class, 'quizzes_id', 'id');
+    }
 }

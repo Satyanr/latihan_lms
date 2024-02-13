@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('questions_id')->nullable()->constrained('questions')->onDelete('cascade');
             $table->foreignId('users_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('quizzes_id')->nullable()->constrained('quizzes')->onDelete('cascade');
+            $table->string('sisa_waktu')->nullable();
             $table->string('answer')->nullable();
             $table->timestamps();
         });

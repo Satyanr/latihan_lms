@@ -52,20 +52,56 @@
         <iframe src="{{ asset('storage/' . $content->file->path) }}" width="800" height="500"></iframe>
     @elseif($content->type == 'kuis')
         <div class="row">
-            <form>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            Featured
-                        </div>
-                        @livewire('main.diklat.content.questions-main', ['questions' => $questions, 'quizz_id' => $quizs->id])
-                        <div class="card-footer text-muted text-center">
-                            2 days ago
-                        </div>
+            <div class="col d-none" id="quiz-column">
+                @livewire('main.diklat.content.questions-main', ['questions' => $questions, 'quizz_id' => $quizs->id])
+            </div>
+            <div class="col" id="quiz-alert">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h6>Jumlah Soal: {{ $quizs->question->count() }}</h6>
+                        <h6>Waktu Pengerjaan: {{ $quizs->durasi }}</h6>
+                        <span>Ingin mengerjakan soal ini ?</span>
+                        <p>
+                            <button onclick="kerjakanClicked(event)">Kerjakan</button>
+                            <button>Kembali</button>
+                        </p>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
+
+        <script>
+            var interval;
+
+            function kerjakanClicked(event) {
+                event.preventDefault();
+
+                var quizColumn = document.getElementById('quiz-column');
+                var quizAlert = document.getElementById('quiz-alert');
+                quizColumn.classList.remove('d-none');
+                quizAlert.classList.add('d-none');
+
+                var countdownElement = document.getElementById('countdown');
+                var countdown = parseInt(countdownElement.innerText);
+
+                interval = setInterval(function() {
+                    countdown--;
+                    countdownElement.innerText = countdown;
+
+                    if (countdown <= 0) {
+                        clearInterval(interval);
+                        var submitButton = document.querySelector('button[type="submit"]');
+                        if (submitButton) {
+                            submitButton.click();
+                        }
+                    }
+                }, 1000);
+            }
+
+            function stopCountdown() {
+                clearInterval(interval);
+            }
+        </script>
     @endif
 
 </div>
