@@ -16,6 +16,13 @@
                                 placeholder="Judul Content" wire:model='nama'>
                         </div>
                         <div class="form-group">
+                            <input type="text" class="form-control @error('durasi') is-invalid @enderror"
+                                placeholder="Durasi" wire:model='durasi'>
+                            @error('durasi')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <div wire:ignore>
                                 <textarea class="summernote form-control" wire:model="deskripsi">
                                 </textarea>
@@ -129,15 +136,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
-                            <div class="form-row mb-3">
-                                <div class="col">
-                                    <input type="text" class="form-control @error('durasi') is-invalid @enderror"
-                                        placeholder="Durasi" wire:model='durasi'>
-                                    @error('durasi')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
                             <div class="form-row mb-3">
                                 <div class="col">
                                     <input type="text" class="form-control @error('question') is-invalid @enderror"

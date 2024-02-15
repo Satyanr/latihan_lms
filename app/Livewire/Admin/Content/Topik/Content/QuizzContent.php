@@ -10,7 +10,7 @@ use App\Models\QuestionLinkQuiz;
 
 class QuizzContent extends Component
 {
-    public $topik, $nama, $deskripsi, $question, $option1, $option2, $option3, $option4, $answer;
+    public $topik, $nama, $deskripsi, $question, $option1, $option2, $option3, $option4, $answer, $durasi;
     public $questionmode = false,
         $updateMode = false;
     public $selectedquiz;
